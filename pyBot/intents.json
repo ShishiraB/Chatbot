@@ -1,0 +1,469 @@
+{
+    "intents": [
+        {
+            "tag": "Introduction",
+            "patterns": [
+                "Hi"
+            ],
+            "responses": [
+                "Hello! This is Flocco here and I'm here to help you today!"
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "noanswer",
+            "patterns": [],
+            "responses": [
+                "Sorry, can't understand you",
+                "Please give me more info",
+                "Not sure I understand"
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "options",
+            "patterns": [
+               "/help",
+               "View all options"
+            ],
+            "responses": [
+                "*Here are the options*\n\n1.Queries in refunds/payments\n\t1A.Product Expired\n\t1B.Refund Initiation\n\t1C.Refund Not Received\n\t1D.Payment Success Order Failure\n\t1E.Card Policies\n\t1F.Payment Account Changes\n\t1G.Payment Failure\n2.Queries in Order\n\t2A.Order Updates\n\t2B.How do I know if the order has been placed successfully\n\t2C.Order Cancellation\n3.Queries in Product\n\t3A.Quality Assurance\n\t3B.Product Details Query\n4.Queries in Delivery\n\t4A.Product Not Received in ETA\n\t4B.Address Change after Pickup\n5.Issue in delivered order\n\t5A.Damaged Products\n\t5B.Missing Products\n6.Queries regarding discounts & offers\n7.Feedback on app usage & concerns"
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "Identity",
+            "patterns": [
+                "Who are you",
+                "what are you",
+                "What is your name"
+            ],
+            "responses": [
+                "I am Flocco, a Deep-Learning chatbot"
+            ]
+        },
+        {
+            "tag": "greetreply",
+            "patterns": [
+                "i am good",
+                "I'm good",
+                "i am fine",
+                " i'm fine",
+                "good"
+            ],
+            "responses": [
+                "Good to know!"
+            ]
+        },
+        {
+            "tag": "subMenu1",
+            "patterns": [
+                "About Flocco",
+                "Flocco"
+            ],
+            "responses":[
+                "1a.Where am I getting my groceries from?\n\n1b.How do I contact Flocco customer care?\n\n1c.Do you charge a commission from the Kirana stores?\n\n1d.How do you pay your riders?\n\n1e.Which cities are Flocco operating in?\n\n1f.What if I want to order from Flocco if they have not expanded to my location yet?\n\nType from *1a* to *1f* to view relevant answers\nType *Other* if your issue is not listed\nType *0* for main menu"
+            ]
+        },
+
+            {
+                "tag":"groceries",
+                "patterns":[
+                    "Where am I getting my groceries from",
+                    "1A.",
+                    "1A"
+                ],
+                "responses":[
+                    "We deliver your groceries only from the nearest kirana stores in your neighborhood."
+                ]
+            },
+            {
+                "tag":"contact",
+                "patterns":[
+                    "1B.",
+                    "How do I contact Flocco customer care",
+                    "1B"
+                ],
+                "responses":[
+                    "You may make use of the chatbot on WhatsApp or write to us at info@flocco.co"
+                ]
+            },
+            {
+                "tag": "commission",
+                "patterns": [
+                    "1C",
+                    "Do you charge a commission from the Kirana stores",
+                    "1C."
+                ],
+                "responses": [
+                    "No, our aim at Flocco is to support and enable Kirana stores with technology and provide convenience to our customers. We are a zero-commission model and charge a monthly, quarterly or yearly nominal platform fee, from the Kiranas"
+                ]
+            },
+            {
+                "tag": "riders",
+                "patterns": [
+                    "How do you pay your riders",
+                    "1D",
+                    "1D."
+                ],
+                "responses": [
+                    "All our riders get a good, standard and fixed income that enables them with predictability of income and economic stability. They are given compulsory weekly offs without any pay cut and operate standard working hours as per law"
+                ]
+            },
+            {
+                "tag": "cities",
+                "patterns": [
+                    "1E",
+                    "Which cities are Flocco operating in",
+                    "1E."
+                ],
+                "responses": [
+                    "We are currently live in Bangalore, specifically within Koramangala. However, we are planning on expanding very soon and you’ll be kept posted!"
+                ]
+            },
+            {
+                "tag": "location",
+                "patterns": [
+                    "1F",
+                    "What if I want to order from Flocco if they have not expanded to my location yet",
+                    "1F."
+                ],
+                "responses": [
+                    "At the moment, Flocco is only functional within Koramangala to begin the pilot run. If the delivery address falls within the grid in Koramangala, we can fulfill the order as of now. However, we will expand to the rest of Bangalore very soon. So, stay tuned!"
+                ]
+            },
+
+        {
+            "tag": "subMenu2",
+            "patterns":[
+                "Orders and Deliveries",
+                "Order"
+            ],
+            "responses": [
+                "2a.Can I edit my order?\n\n2b.How do I cancel my order?\n\n2c.Is Flocco accountable for the quality of the groceries received?\n\n2d.Is there a minimum order value?\n\n2e.What are your delivery charges\n\n2f.What if the kirana does not hold brands that I prefer to order?\n\n2g.What if I placed a wrong order?\n\n2h.Do you deliver bulk orders?\n\n2i.Can I schedule a delivery?\n\n2j.What do you mean by ‘your location is not serviceable’?\n\nType from *2a to 2j* to view relevant answers\nType *Other* if your issue is not listed\nType *0* for main menu"
+            ]
+        },
+
+            {
+                "tag": "edit",
+                "patterns": [
+                    "2A",
+                    "Can I edit my order",
+                    "2A."
+                ],
+                "responses": [
+                    "At the moment, we do not have the function to edit an order that has already been placed successfully"
+                ]
+            },
+            {
+                "tag":"cancel",
+                "patterns":[
+                    "2B",
+                    "How do I cancel my order",
+                    "2B."
+                ],
+                "responses": [
+                    "Orders placed within working hours (7am to 11pm) can be cancelled within 60 seconds of the order being placed. You will be able to cancel from the order confirmation screen.\n\nOrders placed outside working hours (11pm to 7am) can be cancelled any time before 7 am."
+                ]
+            },
+            {
+                "tag": "quality",
+                "patterns": [
+                    "Is Flocco accountable for the quality of the groceries received",
+                    "2C",
+                    "2C."
+                ],
+                "responses": [
+                    "Flocco delivers only packed branded items at this moment. The quality of which is maintained by the kirana stores. However, in case the product that you received is expired, damaged or is not consumable, please tell us more about your problem by typing *Other* in this chat window and we shall respond to you accordingly in due time."
+                ]
+            },
+            {
+                "tag": "minimum",
+                "patterns": [
+                    "Is there a minimum order value",
+                    "2D",
+                    "2D."
+                ],
+                "responses": [
+                    "No, we have no minimum order value."
+                ]
+            },
+            {
+                "tag": "delivery",
+                "patterns": [
+                    "What are your delivery charges",
+                    "2E",
+                    "2E."
+                ],
+                "responses": [
+                    "The deliveries are free for now, until further notice. However, we aim to give predictability to customers irrespective of weather conditions or availability of riders, or any other circumstance by having a fixed cost for deliveries in the future."
+                ]
+            },
+            {
+                "tag": "brands",
+                "patterns": [
+                    "What if the kirana does not hold brands that I prefer to order",
+                    "2F",
+                    "2F."
+                ],
+                "responses": [
+                    "Flocco aims on working with various Kiranas put up in and around your location. Which means, in case one Kirana does not stock on your preferred brands, we will hop into another Kirana nearby to fulfill your order."
+                ]
+            },
+            {
+                "tag": "wrong",
+                "patterns": [
+                    "What if I placed a wrong order",
+                    "2G",
+                    "2G."
+                ],
+                "responses": [
+                    "In this case, you will have the option to cancel your order within the first 60 seconds of placing the order. If not, the order will be accepted by the Kirana store and delivered."
+                ]
+            },
+            {
+                "tag": "bulk",
+                "patterns": [
+                    "Do you deliver bulk orders",
+                    "2H",
+                    "2H."
+                ],
+                "responses": [
+                    "Yes, we do. Although for the welfare of the rider, each rider has an allowance of 12kg only. In case the order quantity is higher, we will fulfill your order through multiple deliveries."
+                ]
+            },
+            {
+                "tag": "schedule",
+                "patterns": [
+                    "Can I schedule a delivery",
+                    "2I",
+                    "2I."
+                ],
+                "responses": [
+                    "We are currently working on developing the operations of scheduling deliveries. We aim to make it functional soon!"
+                ]
+            },
+            {
+                "tag": "serviceable",
+                "patterns": [
+                    "What do you mean by ‘your location is not serviceable’",
+                    "2J",
+                    "2J."
+                ],
+                "responses": [
+                    "You will see this pop up on your screen if you are out of the location grid we are not currently operational in. However, we are definitely launching in your locality very soon."
+                ]
+            },
+        {
+            "tag":"subMenu3",
+            "patterns": [
+                "Payments and Refunds ",
+                "Payment"
+            ],
+            "responses": [
+                "3a.How do I get a refund?\n\n3b.Do I get a refund if some of the items in my order are delivered wrong?\n\n3c.Why has my payment been declined?\n\nType from *3a* to *3c* to view relevant answers\nType *Other* if your issue is not listed\nType *0* for main menu"
+            ]
+        },
+
+            {
+                "tag": "refund",
+                "patterns":[
+                    "How do I get a refund",
+                    "3A",
+                    "3A."
+                ],
+                "responses": [
+                    "Refunds will be initiated automatically in case of ordered items being out of stock."
+                ]
+            },
+            {
+                "tag": "wrongdelivery",
+                "patterns":[
+                    "Do I get a refund if some of the items in my order are delivered wrong",
+                    "3B",
+                    "3B."
+                ],
+                "responses": [
+                    "Yes. For this we will require you to send us a picture by writing to us at info@flocco.co of the items that were delivered wrong, damaged, opened or consumed. Alternatively, please tell us more about your problem by typing *Other* in this chat window and we shall respond to you accordingly in due time."
+                ]
+            },
+            {
+                "tag": "declined",
+                "patterns":[
+                    "Why has my payment been declined",
+                    "3C",
+                    "3C."
+                ],
+                "responses": [
+                    "Make sure to check that you have entered the correct details to complete the transaction! Usually, the payment is declined if wrong information is entered during payment. If otherwise, check with your bank or write to us at info@flocco.co"
+                ]
+            },
+
+        {
+            "tag": "subMenu4",
+            "patterns": [
+                "Feedback & Comments",
+                "Feedback"
+            ],
+            "responses": [
+                "4a.Where can I submit feedback about Flocco?\n\nType *4a* to view relevant answer\nType *Other* if your issue is not listed\nType *0* for main menu"
+            ]
+        },
+
+            {
+                "tag": "feedback",
+                "patterns": [
+                    "4A",
+                    "Where can I submit feedback about Flocco",
+                    "4A."
+                ],
+                "responses": [
+                    "Your feedback is always welcome and you may submit the same by writing to us on info@flocco.co or visiting our website www.flocco.co for further information. Alternatively, please tell us more about your feedback by typing *Other* in this chat window."
+                ]
+            },
+
+        {
+            "tag": "subMenu5",
+            "patterns": [
+                "Discounts and Offers",
+                "Discount"
+            ],
+            "responses": [
+                "5a.Does Flocco offer any discounts?\n\nType *5a* to view relevant answer\nType *Other* if your issue is not listed\nType *0* for main menu"
+            ]
+        },
+
+            {
+                "tag": "discounts",
+                "patterns": [
+                    "5A",
+                    "Does Flocco offer any discounts",
+                    "5A."
+                ],
+                "responses":[
+                    "Given that we are a zero-commission company, currently Flocco sells all products at MRP as per law. This also ensures that Kiranas receive the entire product amount in full with no loss of revenue. However, discounts and offers if applicable will be made available via coupons in the payment checkout page."
+                ]
+            },
+        {
+            "tag": "subMenu6",
+            "patterns": [
+                "Your Flocco Account ",
+                "Account"
+            ],
+            "responses":[
+                "6a.Is registration mandatory to place an order?\n\n6b.Once registered, can I edit my personal information?\n\n6c.How can I deactivate my Flocco account?\n\n6d.What are the various payment options available?\n\n6e.Can I set more than one delivery address on the application?\n\n6f.Is my personal data and information safe with Flocco?\n\nType from *6a* to *6f* to view relevant answers\nType *Other* if your issue is not listed\nType *0* for main menu"
+            ]
+        },
+
+        {
+            "tag": "registration",
+            "patterns": [
+                "6A",
+                "Is registration mandatory to place an order",
+                "6A."
+            ],
+            "responses":[
+                "To enable us to successfully receive and fulfill your order, you would have to register your account by following a few simple steps that are very intuitive."
+            ]
+        },
+        {
+            "tag": "information",
+            "patterns": [
+                "6B",
+                "Once registered, can I edit my personal information",
+                "6B."
+            ],
+            "responses":[
+                "You may edit your personal information, including delivery address by heading to settings page and tapping on the ‘Profile’ tab. Please click on the relevant data fields to edit/update your information."
+            ]
+        },
+
+        {
+            "tag": "deactivate",
+            "patterns": [
+                "6C",
+                "How can I deactivate my Flocco account",
+                "6C."
+            ],
+            "responses":[
+                "We are sorry to see you leave the platform, please do let us know what went wrong for you. However, in case you still want to deactivate your account, you may do so by heading to the settings page and tapping on the ‘Profile’ tab."
+            ]
+        },
+        {
+            "tag": "payment",
+            "patterns": [
+                "6D",
+                "What are the various payment options available",
+                "6D."
+            ],
+            "responses":[
+                "You may choose to pay via United Payments Interface (UPI), Net Banking, Credit/Debit Cards."
+            ]
+        },
+        {
+            "tag": "address",
+            "patterns": [
+                "6E",
+                "Can I set more than one delivery address on the application",
+                "6E."
+            ],
+            "responses":[
+                "Yes, you may choose to add multiple delivery addresses under your user profile. For ease of convenience, each of these delivery addresses can be tagged to a specific name of your choice"
+            ]
+        },
+
+         {
+            "tag": "safety",
+            "patterns": [
+                "6F",
+                "Is my personal data and information safe with Flocco",
+                "6F."
+            ],
+            "responses":[
+                "All personal information and data will be safe with Flocco, bound by the data policy. We urge you to check the Terms & Conditions for more details regarding this."
+            ]
+        },
+
+
+        {
+            "tag": "subMenu7",
+            "patterns": [
+                "Flocco Application & Features",
+                "App"
+            ],
+            "responses": [
+                "7a.What is 'Recommended List' and how can I make use of this feature?\n\n7b.What is 'My List' and how can I leverage this feature?\n\nType from *7a* to *7b* to view relevant answers\nType *Other* if your issue is not listed\nType *0* for main menu"
+            ]
+        },
+
+
+        {
+            "tag": "reccommended",
+            "patterns": [
+                "7A",
+                "What is 'Recommended List' and how can I make use of this feature?",
+                "7A."
+            ],
+            "responses":[
+                "This is a curated list of products recommended by Flocco for you, that can be modified and added to your shopping list."
+            ]
+        },
+        {
+            "tag": "list",
+            "patterns": [
+                "7B",
+                "What is 'My List' and how can I leverage this feature?",
+                "7B."
+            ],
+            "responses":[
+                "'My List' allows you to create a list of products that you commonly order on a regular basis. Multiple such lists can be created and tagged with an appropriate name as per your choice that allows you to check-out in once click."
+            ]
+        }
+    ]
+}
