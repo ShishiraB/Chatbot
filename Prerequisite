@@ -1,0 +1,12 @@
+The Required modules for this project
+---
+1. NLTK
+  You can install this library by these following commads
+    pip install nltk
+    To install modules in repl
+      import nltk 
+      nltk.download()
+2. Numpy
+  pip install numpy
+3. tensorflow
+  pip install tensorflow
