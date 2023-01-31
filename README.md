@@ -1,5 +1,5 @@
 # Chatbot
-A Simple whatsapp chatbot created using python and NLP
+A Simple chatbot created using python and NLP
 
 # Training chatbot
 Steps
