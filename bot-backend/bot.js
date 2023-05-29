@@ -46,11 +46,11 @@ function initialize() {
                 res.sendStatus(200); //sending the status to whatsapp (facebook api)
             })
 
-            app.post('/chatbot/getMessage', limiter, verify, function(req, res) {
+            app.post('/chatbot/getMessage', limiter, function(req, res) {
                 handelGetAllMessages(req.body, res); //secured api
             })
 
-            app.get('/chatbot/getPhoneNumbers', limiter, verify, function(req, res) {
+            app.get('/chatbot/getPhoneNumbers', limiter, function(req, res) {
                 handelGetAllNumbers(req, res); //secured api
             })
             
@@ -84,7 +84,15 @@ async function handelValidation(req, res) { //function to get the creadentials v
         }
     }
 }
-
+let cv =0
+const namePattern = /^[A-Za-z\s]{2,}$/;
+function INV(name) {
+    return namePattern.test(name);
+}
+const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+function IEV(email) {
+  return emailPattern.test(email);
+}
 async function handelGetUserInput(req, res) { //handelling the user input i.e.: message coming from whatsapp from customers
     let body = req.body;
     
@@ -128,15 +136,43 @@ async function handelGetUserInput(req, res) { //handelling the user input i.e.: 
                 return
             }
             msg_body = switcher(msg_body_switcher); //function to get the message text by switching from use input number
+            if(toLowerCase(msg_body) == 'exit')
+            {
+                await sendToWhatsApp("Exiting the chat Thank you for reaching us.",phone_number_id, from )
+                setTimeout(() => {
+                    sendTemplate(phone_number_id, from, 'bot_menu_1');
+                }, 3000);
+            }
             if(idPattern.test(msg_body)) { //checking if the user has typed the above given pattern 
                 raiseTicket(msg_body, phone_number_id, from); //function call to raise the ticket
-            } else if(msg_body === '0') { //checking if user typed 0 in the message
-                sendTemplate(phone_number_id, from, 'bot_menu_1'); //function call to send the bot_menu_1 template based on user input i.e.: 0
+            } else if(cv == 1 || cv == -1) {
+                if(cv==1)
+                {
+                    if(!INV(msg_body))
+                    {
+                        let errmsg="Looks like you have not entered correct name please enter it again"
+                        await sendToWhatsApp(errmsg,phone_number_id, from )
+                        return
+                    }
+                }
+                if(cv==2)
+                {
+                    if(!IEV(msg_body))
+                    {
+                        let errmsg="Looks like you have not entered correct Email please enter it again"
+                        await sendToWhatsApp(errmsg,phone_number_id, from )
+                        return
+                    }
+                }
+                await book(phone_number_id, from);
+            } else if(msg_body == 'b' || msg_body == 'B') { //checking if user typed 0 in the message
+                await book(phone_number_id, from); //function call to send the bot_menu_1 template based on user input i.e.: 0
             } else if(msg_body.toLowerCase() === 'other') { //checking if user typed other in the message
                 sendTemplate(phone_number_id, from, 'default_issue_message_with_order_id'); // function call to send the issue template cz user pressed other (user wasnt satisfied by the issue menu)
                 issueNumber.push(from); //pushing the number to array as the user was not satisfied by the menu options
                 storeNumberInDB(from); //storing the nmber in db so that it can be viewed on frontend (custom frontend)
-            } else {
+            } 
+            else {
                 data.message = msg_body;
                 //sending incoming the message from whatsapp to the chatbot
                 await axios({
@@ -173,30 +209,34 @@ async function handelGetUserInput(req, res) { //handelling the user input i.e.: 
 
 function switcher(messages) {
     switch(messages) {
+        case '0':
+            return 'hi';
         case '1':
-            return 'About Flocco';
+            return '1a';
             break;
         case '2':
-            return 'Order';
+            return '2a';
             break;
         case '3':
-            return 'Payment';
-            break;
-        case '4':
-            return 'Feedback'
-            break;
-        case '5':
-            return 'Discount'
-            break;
-        case '6':
-            return 'Account'
-            break;
-        case '7':
-            return 'App'
+            return '3a';
             break;
         default:
             return messages;
             break;
+    }
+}
+
+async function book(phone_number_id, from) { //sendin to messages whatsapp 
+    let data = ["Enter your name: ","Enter your email: ","Thanks for reaching to RadBoards, Our executive will connect with you shortly."]
+    if(cv==0){
+        await sendToWhatsApp(data[0],phone_number_id, from )
+        cv++
+    } else if (cv == 1) {
+        await sendToWhatsApp(data[1],phone_number_id, from)
+        cv=-1
+    } else if(cv == -1) {
+        await sendToWhatsApp(data[2],phone_number_id, from)
+        cv=0
     }
 }
 
