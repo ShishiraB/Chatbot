@@ -148,7 +148,7 @@ async function handelGetUserInput(req, res) { //handelling the user input i.e.: 
                         return
                     }
                 }
-                if(cv==2)
+                if(cv==-1)
                 {
                     if(!IEV(msg_body))
                     {
@@ -159,9 +159,9 @@ async function handelGetUserInput(req, res) { //handelling the user input i.e.: 
                 }
                 await book(phone_number_id, from);
             } else if(msg_body.toLowerCase() == 'exit') {
-                    await sendToWhatsApp("Exiting the chat Thank you for reaching us.",phone_number_id, from )
+                    await sendToWhatsApp("Exiting the chat",phone_number_id, from )
                     setInterval(() => {
-                        sendToWhatsApp(phone_number_id, from )
+                        sendToWhatsApp("Thank you for reaching us.\nYou can call me back anytime by saying hi",phone_number_id, from )
                     }, 3000);
             } else if(msg_body == 'b' || msg_body == 'B') { //checking if user typed 0 in the message
                 await book(phone_number_id, from); //function call to send the bot_menu_1 template based on user input i.e.: 0
