@@ -89,7 +89,7 @@ const namePattern = /^[A-Za-z\s]{2,}$/;
 function INV(name) {
     return namePattern.test(name);
 }
-const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const emailPattern = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
 function IEV(email) {
   return emailPattern.test(email);
 }
@@ -136,13 +136,6 @@ async function handelGetUserInput(req, res) { //handelling the user input i.e.: 
                 return
             }
             msg_body = switcher(msg_body_switcher); //function to get the message text by switching from use input number
-            if(toLowerCase(msg_body) == 'exit')
-            {
-                await sendToWhatsApp("Exiting the chat Thank you for reaching us.",phone_number_id, from )
-                setTimeout(() => {
-                    sendTemplate(phone_number_id, from, 'bot_menu_1');
-                }, 3000);
-            }
             if(idPattern.test(msg_body)) { //checking if the user has typed the above given pattern 
                 raiseTicket(msg_body, phone_number_id, from); //function call to raise the ticket
             } else if(cv == 1 || cv == -1) {
@@ -165,6 +158,11 @@ async function handelGetUserInput(req, res) { //handelling the user input i.e.: 
                     }
                 }
                 await book(phone_number_id, from);
+            } else if(toLowerCase(msg_body) == 'exit') {
+                    await sendToWhatsApp("Exiting the chat Thank you for reaching us.",phone_number_id, from )
+                    setInterval(() => {
+                        sendToWhatsApp(phone_number_id, from )
+                    }, 3000);
             } else if(msg_body == 'b' || msg_body == 'B') { //checking if user typed 0 in the message
                 await book(phone_number_id, from); //function call to send the bot_menu_1 template based on user input i.e.: 0
             } else if(msg_body.toLowerCase() === 'other') { //checking if user typed other in the message
