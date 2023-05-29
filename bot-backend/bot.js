@@ -158,7 +158,7 @@ async function handelGetUserInput(req, res) { //handelling the user input i.e.: 
                     }
                 }
                 await book(phone_number_id, from);
-            } else if(toLowerCase(msg_body) == 'exit') {
+            } else if(msg_body.toLowerCase() == 'exit') {
                     await sendToWhatsApp("Exiting the chat Thank you for reaching us.",phone_number_id, from )
                     setInterval(() => {
                         sendToWhatsApp(phone_number_id, from )
